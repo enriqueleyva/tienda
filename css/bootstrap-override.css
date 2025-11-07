@@ -1,0 +1,86 @@
+/* css/bootstrap-override.css */
+/* Sobrescribir estilos base de Bootstrap 3 */
+
+/* Reset de tamaños de fuente */
+body {
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+}
+
+p, li, td, th, div, span, a {
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+}
+
+/* Headers */
+h1, .h1 { font-size: 24px !important; }
+h2, .h2 { font-size: 20px !important; }
+h3, .h3 { font-size: 18px !important; }
+h4, .h4 { font-size: 16px !important; }
+h5, .h5 { font-size: 14px !important; }
+h6, .h6 { font-size: 12px !important; }
+
+/* Componentes Bootstrap 3 */
+.btn {
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+}
+
+.form-control {
+    font-size: 14px !important;
+    height: auto !important;
+    padding: 6px 12px !important;
+}
+
+.navbar-nav > li > a {
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+}
+
+.label {
+    font-size: 14px !important;
+}
+
+.badge {
+    font-size: 12px !important;
+}
+
+.alert {
+    font-size: 14px !important;
+}
+
+.panel {
+    font-size: 14px !important;
+}
+
+.well {
+    font-size: 14px !important;
+}
+
+/* Carrusel */
+.carousel-caption h3 {
+    font-size: 18px !important;
+}
+
+.carousel-caption p {
+    font-size: 14px !important;
+}
+
+/* Tablas */
+.table {
+    font-size: 14px !important;
+}
+
+/* Utilidades de texto */
+.text-muted { font-size: 14px !important; }
+.text-primary { font-size: 14px !important; }
+.text-success { font-size: 14px !important; }
+.text-info { font-size: 14px !important; }
+.text-warning { font-size: 14px !important; }
+.text-danger { font-size: 14px !important; }
+
+/* Listas */
+.list-group-item {
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+}

@@ -1,0 +1,51 @@
+/* css/carousel.css */
+/* Estilos para el carrusel */
+
+.carousel-inner > .item > img {
+    width: 100%;
+    height: 424px;
+    object-fit: cover;
+}
+
+.carousel {
+    margin-bottom: 20px;
+}
+
+/* Fondos para imágenes vacías del carrusel */
+.item:nth-child(1) img {
+    background-color: #f8f9fa;
+}
+
+.item:nth-child(2) img {
+    background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+}
+
+.item:nth-child(3) img {
+    background: linear-gradient(45deg, #f093fb 0%, #f5576c 100%);
+}
+
+.item:nth-child(4) img {
+    background: linear-gradient(45deg, #4facfe 0%, #00f2fe 100%);
+}
+
+/* Estilos responsivos para el carrusel */
+@media (max-width: 768px) {
+    .carousel-inner > .item > img {
+        height: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .carousel-inner > .item > img {
+        height: 250px;
+    }
+    
+    .carousel-caption h3 {
+        font-size: 18px;
+    }
+    
+    .carousel-caption p {
+        font-size: 14px;
+    }
+}
+

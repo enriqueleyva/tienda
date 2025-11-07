@@ -1,0 +1,27 @@
+/* css/layout.css */
+/* ESTILOS CRÍTICOS PARA EL LAYOUT */
+
+html {
+    font-size: 14px !important;
+}
+
+body {
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+}
+
+.main-content {
+    flex: 1 0 auto;
+    width: 100%;
+}
+
+.footer {
+    flex-shrink: 0;
+    width: 100%;
+    margin-top: auto;
+}
+
+/* Asegurar que el contenido tenga suficiente espacio */
+.container.p-3 {
+    padding-bottom: 40px !important;
+}
