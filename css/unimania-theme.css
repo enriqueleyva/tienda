@@ -1,0 +1,191 @@
+:root {
+    --unimania-navy: #041E42;
+    --unimania-gold: #FFCD00;
+    --unimania-classic-gold: #C49630;
+    --unimania-white: #FFFFFF;
+    --unimania-black: #000000;
+    --unimania-silver: #AEAEAE;
+
+    --bs-primary: var(--unimania-navy);
+    --bs-primary-rgb: 4, 30, 66;
+    --bs-secondary: var(--unimania-classic-gold);
+    --bs-secondary-rgb: 196, 150, 48;
+    --bs-warning: var(--unimania-gold);
+    --bs-warning-rgb: 255, 205, 0;
+    --bs-dark: var(--unimania-navy);
+    --bs-dark-rgb: 4, 30, 66;
+    --bs-light: var(--unimania-white);
+    --bs-light-rgb: 255, 255, 255;
+    --bs-link-color: var(--unimania-navy);
+    --bs-link-hover-color: var(--unimania-classic-gold);
+}
+
+a {
+    color: var(--bs-link-color);
+}
+
+a:hover,
+a:focus {
+    color: var(--bs-link-hover-color);
+}
+
+.navbar-unimania {
+    background-color: var(--unimania-navy) !important;
+    border-bottom: 4px solid var(--unimania-gold);
+    box-shadow: 0 2px 12px rgba(4, 30, 66, 0.2);
+}
+
+.navbar-unimania .navbar-brand,
+.navbar-unimania .nav-link,
+.navbar-unimania .navbar-text,
+.navbar-unimania .fas,
+.navbar-unimania .fab {
+    color: var(--unimania-white) !important;
+}
+
+.navbar-unimania .nav-link.active,
+.navbar-unimania .nav-link:focus,
+.navbar-unimania .nav-link:hover {
+    color: var(--unimania-gold) !important;
+    background-color: transparent !important;
+}
+
+.navbar-unimania .navbar-toggler {
+    border-color: var(--unimania-gold);
+}
+
+.navbar-unimania .navbar-toggler-icon,
+.navbar-unimania .navbar-toggler span {
+    background-color: var(--unimania-gold);
+}
+
+.navbar-unimania .navbar-nav {
+    margin-right: 3rem;
+}
+
+.navbar-unimania .navbar-search-form {
+    flex: 1 1 320px;
+    max-width: 480px;
+    margin-right: 1.5rem;
+}
+
+.navbar-unimania .navbar-search-form .input-group {
+    width: 100%;
+    display: flex;
+}
+
+.navbar-unimania .navbar-search-form .form-control {
+    border-top-left-radius: 999px;
+    border-bottom-left-radius: 999px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right: 0;
+    padding-inline: 1.25rem;
+    min-height: 2.75rem;
+}
+
+.navbar-unimania .navbar-search-form .btn-search {
+    background-color: var(--unimania-gold);
+    border-color: var(--unimania-gold);
+    color: var(--unimania-navy);
+    border-top-right-radius: 999px;
+    border-bottom-right-radius: 999px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-left: 0;
+    min-height: 2.75rem;
+    padding-inline: 1.25rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar-unimania .navbar-search-form .btn-search:hover,
+.navbar-unimania .navbar-search-form .btn-search:focus {
+    background-color: var(--unimania-classic-gold);
+    border-color: var(--unimania-classic-gold);
+    color: var(--unimania-white);
+}
+
+.navbar-unimania .navbar-search-form .btn-search .fas {
+    color: currentColor;
+}
+
+@media (max-width: 991.98px) {
+    .navbar-unimania .navbar-nav {
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+
+    .navbar-unimania .navbar-search-form {
+        flex: 1 1 auto;
+        max-width: none;
+        margin: 0 0 1rem 0;
+    }
+}
+
+.footer-unimania {
+    background-color: var(--unimania-navy) !important;
+    border-top: 4px solid var(--unimania-classic-gold);
+    color: var(--unimania-white) !important;
+}
+
+.footer-unimania a {
+    color: var(--unimania-gold) !important;
+    transition: color 0.2s ease-in-out;
+}
+
+.footer-unimania a:hover,
+.footer-unimania a:focus {
+    color: var(--unimania-white) !important;
+}
+
+.card-header,
+.card .card-header {
+    background-color: var(--unimania-navy) !important;
+    color: var(--unimania-white) !important;
+    border-bottom: 3px solid var(--unimania-gold) !important;
+}
+
+.list-group-item.active,
+.list-group-item-action.active {
+    background-color: var(--unimania-navy) !important;
+    border-color: var(--unimania-navy) !important;
+    color: var(--unimania-white) !important;
+}
+
+.list-group-item-action:hover,
+.list-group-item-action:focus {
+    background-color: rgba(4, 30, 66, 0.08) !important;
+    color: var(--unimania-navy) !important;
+}
+
+.form-control:focus {
+    border-color: var(--unimania-gold) !important;
+    box-shadow: 0 0 0 0.2rem rgba(255, 205, 0, 0.25) !important;
+}
+
+.carousel-indicators .active {
+    background-color: var(--unimania-gold) !important;
+}
+
+.carousel-indicators li {
+    border: 1px solid var(--unimania-gold) !important;
+}
+
+.carousel-caption {
+    background-color: rgba(4, 30, 66, 0.75);
+    border-radius: 0.5rem;
+    padding: 1.25rem 1.5rem;
+}
+
+.badge.bg-secondary {
+    background-color: var(--unimania-classic-gold) !important;
+    color: var(--unimania-navy) !important;
+}
+
+.btn-link,
+.btn-link:hover,
+.btn-link:focus {
+    color: var(--unimania-navy) !important;
+}

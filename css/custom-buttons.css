@@ -3,68 +3,73 @@
 
 /* Botón primario - Azul UNIMANIA */
 .btn-primary {
-    background-color: #47acff !important;
-    border-color: #47acff !important;
-    color: white !important;
+    background-color: var(--unimania-navy) !important;
+    border-color: var(--unimania-navy) !important;
+    color: var(--unimania-white) !important;
+    transition: all 0.2s ease-in-out !important;
 }
 
 .btn-primary:hover,
 .btn-primary:focus,
 .btn-primary:active {
-    background-color: #3a8cd6 !important;
-    border-color: #3a8cd6 !important;
-    color: white !important;
+    background-color: var(--unimania-classic-gold) !important;
+    border-color: var(--unimania-classic-gold) !important;
+    color: var(--unimania-navy) !important;
 }
 
 /* Botón éxito - Verde */
 .btn-success {
-    background-color: #3a8cd6 !important;
-    border-color: #3a8cd6 !important;
-    color: white !important;
+    background-color: var(--unimania-gold) !important;
+    border-color: var(--unimania-gold) !important;
+    color: var(--unimania-navy) !important;
+    font-weight: 600 !important;
+    transition: all 0.2s ease-in-out !important;
 }
 
 .btn-success:hover,
 .btn-success:focus,
 .btn-success:active {
-    background-color: #47acff !important;
-    border-color: #47acff !important;
-    color: white !important;
+    background-color: var(--unimania-classic-gold) !important;
+    border-color: var(--unimania-classic-gold) !important;
+    color: var(--unimania-white) !important;
 }
 
 /* Botón outline info */
 .btn-outline-info {
-    color: #47acff !important;
-    border-color: #47acff !important;
+    color: var(--unimania-navy) !important;
+    border-color: var(--unimania-navy) !important;
     background-color: transparent !important;
+    transition: all 0.2s ease-in-out !important;
 }
 
 .btn-outline-info:hover,
 .btn-outline-info:focus,
 .btn-outline-info:active {
-    background-color: #47acff !important;
-    border-color: #47acff !important;
-    color: white !important;
+    background-color: var(--unimania-gold) !important;
+    border-color: var(--unimania-gold) !important;
+    color: var(--unimania-navy) !important;
 }
 
 /* Botón light con outline primary */
 .btn-light.btn-outline-primary {
-    color: #47acff !important;
-    border-color: #47acff !important;
-    background-color: white !important;
+    color: var(--unimania-navy) !important;
+    border-color: var(--unimania-gold) !important;
+    background-color: var(--unimania-white) !important;
+    transition: all 0.2s ease-in-out !important;
 }
 
 .btn-light.btn-outline-primary:hover,
 .btn-light.btn-outline-primary:focus,
 .btn-light.btn-outline-primary:active {
-    background-color: #47acff !important;
-    border-color: #47acff !important;
-    color: white !important;
+    background-color: var(--unimania-gold) !important;
+    border-color: var(--unimania-gold) !important;
+    color: var(--unimania-navy) !important;
 }
 
 /* Badge secundario */
 .badge.bg-secondary {
-    background-color: #6c757d !important;
-    color: white !important;
+    background-color: var(--unimania-classic-gold) !important;
+    color: var(--unimania-navy) !important;
 }
 
 /* ESTILOS PARA EL BADGE DEL CARRITO - NUEVO */
@@ -77,8 +82,8 @@
 }
 
 .btn-outline-primary .badge {
-    background-color: #6c757d !important;
-    color: white !important;
+    background-color: var(--unimania-classic-gold) !important;
+    color: var(--unimania-navy) !important;
     font-size: 12px !important;
     padding: 4px 8px !important;
     border-radius: 10px !important;
@@ -109,28 +114,31 @@ a[href="checkout.php"] {
 
 /* Dropdown menu */
 .dropdown-menu {
-    background-color: white !important;
-    border: 1px solid #47acff !important;
+    background-color: var(--unimania-white) !important;
+    border: 1px solid var(--unimania-gold) !important;
+    box-shadow: 0 4px 12px rgba(4, 30, 66, 0.1);	
 }
 
 .dropdown-item:hover {
-    background-color: #47acff !important;
-    color: white !important;
+    .dropdown-item:hover,
+    .dropdown-item:focus {
+    background-color: var(--unimania-gold) !important;
+    color: var(--unimania-navy) !important;
 }
 
 /* Navbar links */
 .navbar-light .navbar-nav .nav-link {
+    .navbar-unimania .nav-link {
+    color: var(--unimania-white) !important;
     color: white !important;
 }
 
-.navbar-light .navbar-nav .nav-link:hover,
-.navbar-light .navbar-nav .nav-link:focus {
-    color: #e6f3ff !important;
+.navbar-unimania .nav-link:hover,
+.navbar-unimania .nav-link:focus {
+    color: var(--unimania-gold) !important;
 }
 
-.navbar-light .navbar-nav .nav-link.active {
-    color: white !important;
-    font-weight: bold;
-    background-color: rgba(255, 255, 255, 0.2) !important;
-    border-radius: 4px;
+.navbar-unimania .nav-link.active {
+    color: var(--unimania-gold) !important;
+    font-weight: 700 !important;
 }

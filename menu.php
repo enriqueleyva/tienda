@@ -10,8 +10,9 @@
     <link href="css/carousel.css" rel="stylesheet">
     <link href="css/custom-buttons.css" rel="stylesheet">
     <link href="css/bootstrap-override.css" rel="stylesheet">
+    <link href="css/unimania-theme.css" rel="stylesheet">
 
-    <nav class="navbar navbar-expand-lg navbar-light border-bottom" style="background-color: #47acffff;">
+    <nav class="navbar navbar-expand-lg navbar-dark border-bottom navbar-unimania">
         <div class="container my-1" >
 
             <a href="index.php">
@@ -29,10 +30,10 @@
                     </li>
                 </ul>
 
-                <form method="get" action="index.php" autocomplete="off">
-                    <div class="input-group pe-3">
+                <form method="get" action="index.php" autocomplete="off" class="navbar-search-form">
+                    <div class="input-group">
                         <input type="text" name="q" class="form-control" placeholder="Buscar..." aria-describedby="icon-buscar">
-                        <button class="btn btn-outline-info" type="submit" id="icon-buscar">
+                        <button class="btn btn-search" type="submit" id="icon-buscar">
                             <i class="fas fa-search"></i>
                         </button>
                     </div>

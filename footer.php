@@ -1,4 +1,4 @@
-<footer class="footer navbar navbar-light border-top" style="background-color: #47acffff;">
+<footer class="footer footer-unimania navbar navbar-dark border-top">
     <div class="container text-md-start pt-3 pb-2">
         <div class="row mt-3 align-items-center">
             <!-- Columna izquierda -->
