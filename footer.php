@@ -60,3 +60,32 @@
         </div>
     </div>
 </footer>
+
+<div id="cart-feedback" class="cart-feedback" role="status" aria-live="polite" aria-hidden="true"></div>
+
+<script>
+    (function () {
+        const feedback = document.getElementById('cart-feedback');
+        if (!feedback) {
+            return;
+        }
+
+        let hideTimeout;
+
+        window.showCartFeedback = function (message) {
+            if (!feedback) {
+                return;
+            }
+
+            feedback.textContent = message || 'Producto añadido al carrito';
+            feedback.setAttribute('aria-hidden', 'false');
+            feedback.classList.add('is-visible');
+
+            clearTimeout(hideTimeout);
+            hideTimeout = setTimeout(() => {
+                feedback.classList.remove('is-visible');
+                feedback.setAttribute('aria-hidden', 'true');
+            }, 2800);
+        };
+    })();
+</script>

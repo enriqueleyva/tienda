@@ -267,6 +267,9 @@ if ($sql->fetchColumn() > 0) {
             .then(data => {
                 if (data.ok) {
                     document.getElementById("num_cart").innerHTML = data.numero;
+                    if (typeof showCartFeedback === 'function') {
+                        showCartFeedback('Producto añadido al carrito');
+                    }
                 }
             })
         }

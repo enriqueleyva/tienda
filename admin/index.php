@@ -32,17 +32,17 @@ if (!empty($_POST)) {
     <meta name="author" content="Marco Robles" />
     <title>SEGECOM-EX - Panel de administrador</title>
     <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="<?php echo SITE_URL; ?>css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?php echo SITE_URL; ?>css/all.min.css">
+    <link rel="stylesheet" href="<?php echo SITE_URL; ?>css/estilos.css">
+    <link rel="stylesheet" href="<?php echo SITE_URL; ?>css/layout.css">
+    <link rel="stylesheet" href="<?php echo SITE_URL; ?>css/carousel.css">
+    <link rel="stylesheet" href="<?php echo SITE_URL; ?>css/custom-buttons.css">
+    <link rel="stylesheet" href="<?php echo SITE_URL; ?>css/bootstrap-override.css">
+    <link rel="stylesheet" href="<?php echo SITE_URL; ?>css/unimania-theme.css">    
     <link href="css/styles.css" rel="stylesheet" />
 
-    <style>
-        body {
-            background-image: url('images/background.jpg');
-            height: 100%;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-    </style>
+    <link href="<?php echo ADMIN_URL; ?>css/unimania-admin.css" rel="stylesheet" />
 </head>
 
 <body class="bg-aprimary bga-gradient">
@@ -82,7 +82,7 @@ if (!empty($_POST)) {
             </main>
         </div>
         <div id="layoutAuthentication_footer">
-            <footer class="py-4 bg-light mt-auto">
+            <footer class="py-4 mt-auto sb-footer">
                 <div class="container-fluid px-4">
                     <div class="d-flex align-items-center justify-content-between small">
                         <div class="text-muted">

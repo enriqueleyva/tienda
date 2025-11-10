@@ -7,18 +7,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>SEGECOM-EX - Panel de administrador</title>
+    <title>UNIMANIA - Panel de administrador</title>
     <link rel="icon" type="image/png" href="favicon.png">
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="<?php echo SITE_URL; ?>css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?php echo SITE_URL; ?>css/all.min.css">
+    <link rel="stylesheet" href="<?php echo SITE_URL; ?>css/estilos.css">
+    <link rel="stylesheet" href="<?php echo SITE_URL; ?>css/layout.css">
+    <link rel="stylesheet" href="<?php echo SITE_URL; ?>css/carousel.css">
+    <link rel="stylesheet" href="<?php echo SITE_URL; ?>css/custom-buttons.css">
+    <link rel="stylesheet" href="<?php echo SITE_URL; ?>css/bootstrap-override.css">
+    <link rel="stylesheet" href="<?php echo SITE_URL; ?>css/unimania-theme.css">
     <link href="<?php echo ADMIN_URL; ?>css/styles.css" rel="stylesheet" />
+    <link href="<?php echo ADMIN_URL; ?>css/unimania-admin.css" rel="stylesheet" />
     <script src="<?php echo SITE_URL; ?>js/all.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body class="sb-nav-fixed">
-    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+    <nav class="sb-topnav navbar navbar-expand navbar-dark navbar-unimania">
         <!-- Navbar Brand-->
-        <a class="navbar-brand ps-3" href="<?php echo ADMIN_URL; ?>inicio.php">SEGECOM-EX</a>
+        <a class="navbar-brand ps-3 d-flex align-items-center gap-2" href="<?php echo ADMIN_URL; ?>inicio.php">
+            <img src="<?php echo SITE_URL; ?>images/unimania_logo_sf.png" alt="UNIMANIA" class="logo-unimania">
+            <span class="brand-label">Unimania</span>
+        </a>
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
 

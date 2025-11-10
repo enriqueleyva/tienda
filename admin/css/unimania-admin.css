@@ -1,0 +1,243 @@
+/* Admin overrides to align with the storefront styling */
+:root {
+    --admin-sidenav-bg: linear-gradient(180deg, rgba(4, 30, 66, 0.95) 0%, rgba(2, 20, 48, 0.98) 100%);
+    --admin-sidenav-link: var(--unimania-white, #ffffff);
+    --admin-sidenav-link-active: var(--unimania-gold, #ffcd00);
+    --admin-page-bg: var(--unimania-white, #ffffff);
+    --admin-card-radius: 1rem;
+}
+
+body.sb-nav-fixed {
+    background-color: var(--admin-page-bg);
+    color: var(--unimania-navy, #041e42);
+    font-family: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+}
+
+.sb-topnav {
+    background-color: var(--unimania-navy, #041e42) !important;
+    border-bottom: 4px solid var(--unimania-gold, #ffcd00);
+    box-shadow: 0 2px 12px rgba(4, 30, 66, 0.2);
+    min-height: 90px !important;
+}
+
+.sb-topnav .navbar-brand {
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--unimania-gold, #ffcd00) !important;
+}
+
+.sb-topnav .logo-unimania {
+    height: 48px !important;
+    width: auto;
+}
+
+.sb-topnav .nav-link,
+.sb-topnav .dropdown-menu,
+.sb-topnav .dropdown-item {
+    color: var(--unimania-white, #ffffff) !important;
+}
+
+.sb-topnav .dropdown-item:hover,
+.sb-topnav .dropdown-item:focus {
+    background-color: var(--unimania-gold, #ffcd00);
+    color: var(--unimania-navy, #041e42) !important;
+}
+
+.sb-nav-fixed #layoutSidenav #layoutSidenav_nav,
+.sb-sidenav {
+    background: var(--admin-sidenav-bg);
+    color: var(--admin-sidenav-link);
+    box-shadow: inset -1px 0 0 rgba(255, 255, 255, 0.08);
+}
+
+.sb-sidenav .sb-sidenav-menu .nav {
+    padding-top: 1rem;
+    gap: 0.25rem;
+}
+
+.sb-sidenav .nav-link {
+    border-radius: 999px;
+    margin-inline: 1rem;
+    color: var(--admin-sidenav-link);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding-block: 0.75rem;
+    padding-inline: 1.25rem;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.sb-sidenav .nav-link:hover,
+.sb-sidenav .nav-link:focus {
+    background-color: rgba(255, 205, 0, 0.18);
+    color: var(--admin-sidenav-link-active);
+}
+
+.sb-sidenav .nav-link.active {
+    background-color: var(--unimania-gold, #ffcd00);
+    color: var(--unimania-navy, #041e42);
+    font-weight: 600;
+}
+
+.sb-sidenav .sb-nav-link-icon {
+    color: inherit;
+    font-size: 1.1rem;
+}
+
+.sb-sidenav .sb-sidenav-menu-heading {
+    color: rgba(255, 255, 255, 0.6);
+    padding-inline: 1.25rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+}
+
+#layoutSidenav_content {
+    background-color: var(--admin-page-bg);
+}
+
+.card,
+.table,
+.list-group {
+    border-radius: var(--admin-card-radius);
+    border: none;
+    box-shadow: 0 10px 25px rgba(4, 30, 66, 0.08);
+}
+
+.card-header,
+.table thead,
+.list-group-item.active {
+    background: linear-gradient(90deg, var(--unimania-navy, #041e42) 0%, var(--unimania-classic-gold, #c49630) 100%);
+    color: var(--unimania-white, #ffffff);
+    font-weight: 600;
+    border-bottom: none;
+}
+
+.btn-primary,
+.btn-success,
+.btn-outline-primary {
+    border-radius: 999px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+.btn-primary,
+.btn-success {
+    background-color: var(--unimania-navy, #041e42);
+    border-color: var(--unimania-navy, #041e42);
+}
+
+.btn-primary:hover,
+.btn-success:hover {
+    background-color: var(--unimania-classic-gold, #c49630);
+    border-color: var(--unimania-classic-gold, #c49630);
+}
+
+.btn-outline-primary {
+    color: var(--unimania-navy, #041e42);
+    border-color: var(--unimania-navy, #041e42);
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:focus {
+    color: var(--unimania-white, #ffffff);
+    background-color: var(--unimania-gold, #ffcd00);
+    border-color: var(--unimania-gold, #ffcd00);
+}
+
+.form-control,
+.form-select {
+    border-radius: 999px;
+    padding-inline: 1rem;
+    min-height: 3rem;
+    border-color: rgba(4, 30, 66, 0.25);
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--unimania-gold, #ffcd00);
+    box-shadow: 0 0 0 0.2rem rgba(255, 205, 0, 0.25);
+}
+
+.dataTable-table > thead > tr > th,
+.table > thead > tr > th {
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-size: 0.85rem;
+}
+
+.pagination .page-link {
+    border-radius: 999px !important;
+    border: none;
+    margin: 0 0.25rem;
+    color: var(--unimania-navy, #041e42);
+}
+
+.pagination .page-link:hover,
+.pagination .page-item.active .page-link {
+    background-color: var(--unimania-gold, #ffcd00);
+    color: var(--unimania-navy, #041e42);
+}
+
+footer.sb-footer {
+    background-color: var(--unimania-navy, #041e42);
+    color: var(--unimania-white, #ffffff);
+    border-top: 4px solid var(--unimania-gold, #ffcd00);
+    padding-block: 1.5rem;
+}
+
+footer.sb-footer a {
+    color: var(--unimania-gold, #ffcd00);
+}
+
+@media (max-width: 991.98px) {
+    .sb-topnav {
+        min-height: 72px;
+    }
+
+    .sb-sidenav .nav-link {
+        margin-inline: 0.75rem;
+    }
+}
+
+/* Login view */
+body.bg-aprimary {
+    background: linear-gradient(160deg, rgba(4, 30, 66, 0.92) 0%, rgba(196, 150, 48, 0.85) 100%);
+    color: var(--unimania-white, #ffffff);
+}
+
+body.bg-aprimary .card {
+    background: rgba(255, 255, 255, 0.92);
+    color: var(--unimania-navy, #041e42);
+    box-shadow: 0 15px 35px rgba(4, 30, 66, 0.25);
+}
+
+body.bg-aprimary .card-header {
+    background: transparent;
+    color: var(--unimania-navy, #041e42);
+}
+
+body.bg-aprimary .btn-primary {
+    background-color: var(--unimania-gold, #ffcd00);
+    border-color: var(--unimania-gold, #ffcd00);
+    color: var(--unimania-navy, #041e42);
+}
+
+body.bg-aprimary .btn-primary:hover {
+    background-color: var(--unimania-classic-gold, #c49630);
+    border-color: var(--unimania-classic-gold, #c49630);
+}
+
+#layoutAuthentication_footer {
+    color: var(--unimania-white, #ffffff);
+}
+
+#layoutAuthentication_footer .bg-light {
+    background-color: rgba(4, 30, 66, 0.4) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+#layoutAuthentication_footer .text-muted {
+    color: rgba(255, 255, 255, 0.8) !important;
+}

@@ -229,6 +229,9 @@ $categorias = $categoriaSql->fetchAll(PDO::FETCH_ASSOC);
                     if (data.ok) {
                         let elemento = document.getElementById("num_cart")
                         elemento.innerHTML = data.numero;
+                        if (typeof showCartFeedback === 'function') {
+                            showCartFeedback('Producto añadido al carrito');
+                        }
                     } else {
                         alert("No hay suficientes productos en el stock")
                     }

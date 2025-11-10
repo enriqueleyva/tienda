@@ -15,7 +15,7 @@ session_start();
  *
  * Agregar / al final
  */
-define('SITE_URL', 'http://localhost/tienda_online/');
+define('SITE_URL', 'http://localhost/tienda/');
 
 /**
  * URL del panel de administración
