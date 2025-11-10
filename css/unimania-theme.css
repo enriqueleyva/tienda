@@ -33,7 +33,17 @@ a:focus {
     background-color: var(--unimania-navy) !important;
     border-bottom: 4px solid var(--unimania-gold);
     box-shadow: 0 2px 12px rgba(4, 30, 66, 0.2);
+    padding-block: 0.5rem; 
+    /* CAMBIO 1: Damos una altura mínima a la BARRA AZUL */
+    min-height: 120px; /* <-- ¡AJUSTA ESTE VALOR A TU GUSTO! */
 }
+
+/* CAMBIO 2: Devolvemos el LOGO a un tamaño razonable */
+.navbar-unimania .logo-unimania {
+    height: 90px; /* <-- Logo más pequeño que la barra */
+    width: auto; /* Mantiene la proporción */
+}
+
 
 .navbar-unimania .navbar-brand,
 .navbar-unimania .nav-link,
@@ -60,13 +70,14 @@ a:focus {
 }
 
 .navbar-unimania .navbar-nav {
-    margin-right: 3rem;
+    margin-right: 1.5rem;
 }
 
+
 .navbar-unimania .navbar-search-form {
-    flex: 1 1 320px;
-    max-width: 480px;
-    margin-right: 1.5rem;
+    max-width: 800px; 
+    width: 100%; 
+    margin-right: 0;
 }
 
 .navbar-unimania .navbar-search-form .input-group {
@@ -111,18 +122,82 @@ a:focus {
     color: currentColor;
 }
 
+.navbar-unimania .navbar-actions {
+    align-items: stretch;
+    gap: 1.25rem;
+}
+
+
+.navbar-unimania .navbar-actions > * {
+    align-self: stretch;
+}
+
+.navbar-unimania .navbar-cart-btn,
+.navbar-unimania a.navbar-login,
+.navbar-unimania .navbar-login > .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding-inline: 1.5rem;
+    padding-block: 0;
+    min-height: 2.75rem;
+    border-radius: 999px;
+    font-size: 1rem;
+    line-height: 1;
+}
+
+.navbar-unimania .navbar-login.dropdown {
+    display: inline-flex;
+}
+
+.navbar-unimania .navbar-login.dropdown > .btn {
+    height: 100%;
+}
+
+.navbar-unimania .navbar-cart-btn .fas,
+.navbar-unimania a.navbar-login .fas,
+.navbar-unimania .navbar-login > .btn .fas {
+    font-size: 1rem;
+}
+
+.navbar-unimania .navbar-cart-btn span.badge {
+    margin-left: 0.35rem;
+}
+
+/* --- MEDIA QUERIES --- */
 @media (max-width: 991.98px) {
     .navbar-unimania .navbar-nav {
         margin-right: 0;
         margin-bottom: 1rem;
     }
 
+    .navbar-unimania .navbar-actions {
+        gap: 1rem;
+        width: 100%; 
+        justify-content: center; 
+    }
+
     .navbar-unimania .navbar-search-form {
-        flex: 1 1 auto;
-        max-width: none;
-        margin: 0 0 1rem 0;
+        flex: 1 1 100%;
+        margin: 0;
+        max-width: none; 
+        margin-bottom: 1rem; 
     }
 }
+
+@media (min-width: 992px) {
+    .navbar-unimania .navbar-actions {
+        flex-wrap: nowrap;
+    }
+
+    .navbar-unimania .navbar-cart-btn,
+    .navbar-unimania .navbar-login {
+        flex-shrink: 0;
+    }
+}
+/* --- FIN MEDIA QUERIES --- */
+
 
 .footer-unimania {
     background-color: var(--unimania-navy) !important;

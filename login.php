@@ -56,13 +56,13 @@ if (!empty($_POST)) {
 
             <input type="hidden" name="proceso" value="<?php echo $proceso; ?>">
 
-            <div class="form-floating">
+            <div class="mb-3">
+                <label class="form-label" for="usuario">Usuario</label>
                 <input class="form-control" type="text" id="usuario" name="usuario" placeholder="Usuario" required autofocus>
-                <label for="usuario">Usuario</label>
             </div>
-            <div class="form-floating">
+            <div class="mb-4">
+                <label class="form-label" for="password">Contraseña</label> 
                 <input class="form-control" type="password" id="password" name="password" placeholder="Contraseña" required>
-                <label for="password">Contraseña</label>
             </div>
 
             <div class="col-12">
@@ -78,7 +78,6 @@ if (!empty($_POST)) {
                 ¿No tiene cuenta? <a href="registro.php">Registrate aquí</a>
             </div>
         </form>
-        </div>
     </main>
 
     <?php include 'footer.php'; ?>
