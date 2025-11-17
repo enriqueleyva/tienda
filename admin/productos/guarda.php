@@ -12,13 +12,41 @@ if (!isset($_SESSION['user_type']) || $_SESSION['user_type'] != 'admin') {
 $db = new Database();
 $con = $db->conectar();
 
-$nombre = $_POST['nombre'];
+$nombre = trim($_POST['nombre']);
 $slug =  crearTituloURL($nombre);
 $descripcion = $_POST['descripcion'];
-$precio = $_POST['precio'];
-$descuento = $_POST['descuento'];
-$stock = $_POST['stock'];
-$categoria = $_POST['categoria'];
+$precio = validarNumero($_POST['precio'], true);
+$descuento = validarNumero($_POST['descuento'], true);
+$stock = validarNumero($_POST['stock']);
+$categoria = validarNumero($_POST['categoria']);
+
+$erroresValidacion = [];
+
+if ($precio === null) {
+    $erroresValidacion[] = 'El precio debe ser numérico.';
+}
+
+if ($descuento === null) {
+    $erroresValidacion[] = 'El descuento debe ser numérico.';
+}
+
+if ($stock === null) {
+    $erroresValidacion[] = 'El stock debe ser un número entero.';
+}
+
+if ($categoria === null) {
+    $erroresValidacion[] = 'Seleccione una categoría válida.';
+}
+
+if (empty($nombre)) {
+    $erroresValidacion[] = 'El nombre es obligatorio.';
+}
+
+if (!empty($erroresValidacion)) {
+    $_SESSION['error_validacion'] = implode(' ', $erroresValidacion);
+    header('Location: nuevo.php');
+    exit;
+}
 
 $sql = "INSERT INTO productos (slug, nombre, descripcion, precio, descuento, stock, id_categoria, activo)
 VALUES (?, ?, ?, ?, ?, ?, ?, 1)";

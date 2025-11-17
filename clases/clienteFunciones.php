@@ -26,6 +26,11 @@ function validaPassword($password, $repassword)
     return false;
 }
 
+function esTelefono($telefono)
+{
+    return preg_match('/^\d{7,15}$/', $telefono) === 1;
+}
+
 function generarToken()
 {
     return md5(uniqid(mt_rand(), false));

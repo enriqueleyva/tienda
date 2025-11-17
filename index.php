@@ -45,6 +45,11 @@ $categoriaSql = $con->prepare("SELECT id, nombre FROM categorias WHERE activo=1"
 $categoriaSql->execute();
 $categorias = $categoriaSql->fetchAll(PDO::FETCH_ASSOC);
 
+$destacadosSql = $con->prepare("SELECT id, slug, nombre, precio FROM productos WHERE activo=1 ORDER BY id DESC LIMIT 4");
+$destacadosSql->execute();
+$destacados = $destacadosSql->fetchAll(PDO::FETCH_ASSOC);
+
+
 ?>
 <!DOCTYPE html>
 <html lang="es" class="h-100">
@@ -96,7 +101,7 @@ $categorias = $categoriaSql->fetchAll(PDO::FETCH_ASSOC);
                 
                 <div class="item active">
                     <a href="acerca.php/">
-                        <img src="/tienda/images/unimania_banner_ext.jpeg" alt="Banner UNIMANIA" class="img-responsive">
+                        <img src="/tienda/images/unimania_banner_ext.jpeg" alt="Banner informativo sobre UNIMANIA" class="img-responsive">
                     </a>
                     <div class="carousel-caption">
                         <h3>UNIMANIA</h3>
@@ -106,7 +111,7 @@ $categorias = $categoriaSql->fetchAll(PDO::FETCH_ASSOC);
 
                 <div class="item">
                     <a href="index.php?cat=6/">
-                        <img src="/tienda/images/unimania_banner_playeras.png" alt="Playeras UASLP" class="img-responsive">
+                        <img src="/tienda/images/unimania_banner_playeras.png" alt="Promoción de playeras UASLP" class="img-responsive">
                     </a>
                     <div class="carousel-caption">
                         <h3>Playeras UASLP</h3>
@@ -116,7 +121,7 @@ $categorias = $categoriaSql->fetchAll(PDO::FETCH_ASSOC);
 
                 <div class="item">
                     <a href="details/peluiche-rei">
-                        <img src="/tienda/images/unimania_banner_mascota.png" alt="DoArt Pintura" class="img-responsive">
+                        <img src="/tienda/images/unimania_banner_mascota.png" alt="Banner del peluche Rei" class="img-responsive">
                     </a>
                     <div class="carousel-caption">
                         <h3>Conoce a Rei</h3>
@@ -138,6 +143,43 @@ $categorias = $categoriaSql->fetchAll(PDO::FETCH_ASSOC);
             </div>
         </div>
         <!--- FIN CARRUSEL --->
+
+        <?php if (!empty($destacados)) { ?>
+            <div class="container">
+                <div class="row my-4">
+                    <div class="col-12">
+                        <h2 class="fw-bold">Productos destacados</h2>
+                        <p class="text-muted">¡Los productos más vendidos en nuestras sucursales!</p>
+                    </div>
+                    <?php foreach ($destacados as $destacado) { ?>
+                        <div class="col-lg-3 col-md-4 col-sm-6 d-flex">
+                            <div class="card w-100 my-2 shadow-2-strong">
+                                <?php
+                                $idDestacado = $destacado['id'];
+                                $imagenDestacada = "images/productos/$idDestacado/principal.jpg";
+                                if (!file_exists($imagenDestacada)) {
+                                    $imagenDestacada = "images/no-photo.jpg";
+                                }
+                                ?>
+                                <a href="details/<?php echo $destacado['slug']; ?>">
+                                    <img src="<?php echo $imagenDestacada; ?>" class="img-thumbnail" style="max-height: 250px">
+                                </a>
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="mb-1"><?php echo $destacado['nombre']; ?></h5>
+                                    <p class="fw-bold"><?php echo MONEDA . ' ' . number_format($destacado['precio'], 2, '.', ','); ?></p>
+                                </div>
+                                <div class="card-footer bg-transparent">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <a class="btn btn-success" onClick="addProducto(<?php echo $destacado['id']; ?>)">Agregar</a>
+                                        <a href="details/<?php echo $destacado['slug']; ?>" class="btn btn-primary">Detalles</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php } ?>
+                </div>
+            </div>
+        <?php } ?>
 
         <!-- CONTENIDO DE PRODUCTOS -->
         <div class="container p-3">
@@ -187,7 +229,7 @@ $categorias = $categoriaSql->fetchAll(PDO::FETCH_ASSOC);
                                     }
                                     ?>
                                     <a href="details/<?php echo $row['slug']; ?>">
-                                        <img src="<?php echo $imagen; ?>" class="img-thumbnail" style="max-height: 300px">
+                                        <img src="<?php echo $imagen; ?>" class="img-thumbnail" style="max-height: 300px" alt="Imagen del producto <?php echo htmlspecialchars($row['nombre'], ENT_QUOTES, 'UTF-8'); ?>">
                                     </a>
                                     <div class="card-body d-flex flex-column">
                                         <div class="d-flex flex-row">

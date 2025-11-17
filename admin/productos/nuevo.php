@@ -32,6 +32,14 @@ require '../header.php';
     <div class="container-fluid px-3">
         <h3 class="mt-2">Nuevo producto</h3>
 
+        <?php if (!empty($_SESSION['error_validacion'])) { ?>
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <?php echo htmlspecialchars($_SESSION['error_validacion'], ENT_QUOTES); ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+            </div>
+            <?php unset($_SESSION['error_validacion']); ?>
+        <?php } ?>
+
         <form action="guarda.php" method="post" enctype="multipart/form-data" autocomplete="off">
             <div class="mb-3">
                 <label for="nombre" class="form-label">Nombre:</label>
@@ -57,17 +65,17 @@ require '../header.php';
             <div class="row">
                 <div class="col-12 col-md-4 mb-3">
                     <label for="precio" class="form-label">Precio:</label>
-                    <input type="number" class="form-control" name="precio" id="precio" required>
+                    <input type="number" class="form-control" name="precio" id="precio" min="0" step="0.01" required>
                 </div>
 
                 <div class="col-12 col-md-4 mb-3">
                     <label for="descuento" class="form-label">Descuento:</label>
-                    <input type="number" class="form-control" name="descuento" id="descuento" required>
+                    <input type="number" class="form-control" name="descuento" id="descuento" min="0" step="0.01" required>
                 </div>
 
                 <div class="col-12 col-md-4 mb-3">
                     <label for="stock" class="form-label">Stock:</label>
-                    <input type="number" class="form-control" name="stock" id="stock" required>
+                    <input type="number" class="form-control" name="stock" id="stock" min="0" step="1" required>
                 </div>
             </div>
 

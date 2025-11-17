@@ -11,6 +11,14 @@ function esNulo($parametos)
     return false;
 }
 
+function validarNumero($valor, $permitirDecimales = false)
+{
+    $filter = $permitirDecimales ? FILTER_VALIDATE_FLOAT : FILTER_VALIDATE_INT;
+    $resultado = filter_var($valor, $filter);
+
+    return $resultado !== false ? $resultado : null;
+}
+
 function validaPassword($password, $repassword)
 {
     if (strcmp($password, $repassword) === 0) {

@@ -23,12 +23,24 @@ if (!empty($_POST)) {
         $errors[] = "Debe llenar todos los campos";
     }
 
+    if (!esNombreValido($nombres)) {
+        $errors[] = "El nombre solo puede contener letras y espacios";
+    }
+
+    if (!esNombreValido($apellidos)) {
+        $errors[] = "El apellido solo puede contener letras y espacios";
+    }
+
     if (!esEmail($email)) {
         $errors[] = "La dirección de correo no es válida";
     }
 
     if (!validaPassword($password, $repassword)) {
         $errors[] = "Las contraseñas no coinciden";
+    }
+
+    if (!esTelefono($telefono)) {
+        $errors[] = "El número de teléfono debe tener solo dígitos y entre 7 y 15 caracteres.";
     }
 
     if (usuarioExiste($usuario, $con)) {
@@ -102,11 +114,11 @@ if (!empty($_POST)) {
             <form class="row g-3" action="registro.php" method="post" autocomplete="off">
                 <div class="col-md-6">
                     <label for="nombres"><span class="text-danger">*</span> Nombres</label>
-                    <input type="text" name="nombres" id="nombres" class="form-control" required>
+                    <input type="text" name="nombres" id="nombres" class="form-control" pattern="[A-Za-zÁÉÍÓÚáéíóúÑñÜü\\s]+" title="Solo letras y espacios" required>
                 </div>
                 <div class="col-md-6">
                     <label for="apellidos"><span class="text-danger">*</span> Apellidos</label>
-                    <input type="text" name="apellidos" id="apellidos" class="form-control" required>
+                    <input type="text" name="apellidos" id="apellidos" class="form-control" pattern="[A-Za-zÁÉÍÓÚáéíóúÑñÜü\\s]+" title="Solo letras y espacios" required>
                 </div>
 
                 <div class="col-md-6">
@@ -116,7 +128,7 @@ if (!empty($_POST)) {
                 </div>
                 <div class="col-md-6">
                     <label for="telefono"><span class="text-danger">*</span> Telefono</label>
-                    <input type="tel" name="telefono" id="telefono" class="form-control" required>
+                    <input type="tel" name="telefono" id="telefono" class="form-control" pattern="[0-9]{7,15}" title="Solo dígitos, entre 7 y 15 caracteres" required>
                 </div>
 
               <!--  <div class="col-md-6">

@@ -11,14 +11,46 @@ if (!isset($_SESSION['user_type']) || $_SESSION['user_type'] != 'admin') {
 $db = new Database();
 $con = $db->conectar();
 
-$id = $_POST['id'];
-$nombre = $_POST['nombre'];
+$id = validarNumero($_POST['id']);
+$nombre = trim($_POST['nombre']);
 $slug =  crearTituloURL($nombre);
 $descripcion = $_POST['descripcion'];
-$precio = $_POST['precio'];
-$descuento = $_POST['descuento'];
-$stock = $_POST['stock'];
-$categoria = $_POST['categoria'];
+$precio = validarNumero($_POST['precio'], true);
+$descuento = validarNumero($_POST['descuento'], true);
+$stock = validarNumero($_POST['stock']);
+$categoria = validarNumero($_POST['categoria']);
+
+$erroresValidacion = [];
+
+if ($id === null) {
+    $erroresValidacion[] = 'El identificador del producto no es válido.';
+}
+
+if ($precio === null) {
+    $erroresValidacion[] = 'El precio debe ser numérico.';
+}
+
+if ($descuento === null) {
+    $erroresValidacion[] = 'El descuento debe ser numérico.';
+}
+
+if ($stock === null) {
+    $erroresValidacion[] = 'El stock debe ser un número entero.';
+}
+
+if ($categoria === null) {
+    $erroresValidacion[] = 'Seleccione una categoría válida.';
+}
+
+if (empty($nombre)) {
+    $erroresValidacion[] = 'El nombre es obligatorio.';
+}
+
+if (!empty($erroresValidacion)) {
+    $_SESSION['error_validacion'] = implode(' ', $erroresValidacion);
+    header('Location: edita.php?id=' . ($id ?? 0));
+    exit;
+}
 
 $sql = "UPDATE productos SET slug=?, nombre=?, descripcion=?, precio=?, descuento=?, stock=?, id_categoria=? WHERE id = ?";
 $stm = $con->prepare($sql);
