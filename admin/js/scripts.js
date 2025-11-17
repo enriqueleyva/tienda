@@ -41,4 +41,25 @@ window.addEventListener('DOMContentLoaded', event => {
         };
         new simpleDatatables.DataTable(datatablesSimple, options);
     }
+
+    const loginFloatingControls = document.querySelectorAll('#layoutAuthentication .form-floating .form-control');
+    if (loginFloatingControls.length) {
+        loginFloatingControls.forEach((input) => {
+            const defaultPlaceholder = input.getAttribute('placeholder') || '';
+
+            const syncPlaceholder = () => {
+                if (input.value.length > 0) {
+                    input.placeholder = '';
+                } else {
+                    input.placeholder = defaultPlaceholder;
+                }
+            };
+
+            input.addEventListener('input', syncPlaceholder);
+            input.addEventListener('focus', syncPlaceholder);
+            input.addEventListener('blur', syncPlaceholder);
+
+            syncPlaceholder();
+        });
+    }
 });

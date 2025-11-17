@@ -84,9 +84,10 @@ if (!empty($_POST)) {
 
         <form action="recupera.php" method="post" class="row g-3" autocomplete="off">
 
-            <div class="form-floating">
+            <div class="mb-3">
+                 <label class="form-label" for="email">Correo electrónico</label>
                 <input class="form-control" type="email" id="email" name="email" placeholder="Correo electrónico" required>
-                <label for="email">Correo electrónico</label>
+                
             </div>
 
             <div class="d-grid gap-3 col-12">
@@ -103,6 +104,7 @@ if (!empty($_POST)) {
     <?php include 'footer.php'; ?>
 
     <script src="<?php echo SITE_URL; ?>js/bootstrap.bundle.min.js"></script>
+    
 
 </body>
 

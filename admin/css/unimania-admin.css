@@ -17,7 +17,26 @@ body.sb-nav-fixed {
     background-color: var(--unimania-navy, #041e42) !important;
     border-bottom: 4px solid var(--unimania-gold, #ffcd00);
     box-shadow: 0 2px 12px rgba(4, 30, 66, 0.2);
-    min-height: 90px !important;
+    min-height: 64px !important;
+    padding-block: 0.35rem;
+}
+
+.sb-topnav #sidebarToggle {
+    color: var(--unimania-white, #ffffff) !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.35rem 0.5rem;
+    border-radius: 0.85rem;
+    opacity: 1 !important;
+    flex-shrink: 0;
+}
+
+.sb-topnav #sidebarToggle:hover,
+.sb-topnav #sidebarToggle:focus {
+    background-color: rgba(255, 255, 255, 0.12);
+    color: var(--unimania-gold, #ffcd00) !important;
+    text-decoration: none;
 }
 
 .sb-topnav .navbar-brand {
@@ -28,7 +47,7 @@ body.sb-nav-fixed {
 }
 
 .sb-topnav .logo-unimania {
-    height: 48px !important;
+    height: 40px !important;
     width: auto;
 }
 
@@ -152,6 +171,54 @@ body.sb-nav-fixed {
     padding-inline: 1rem;
     min-height: 3rem;
     border-color: rgba(4, 30, 66, 0.25);
+}
+
+/* Ensure floating labels have enough vertical space */
+.form-floating > .form-control {
+    height: calc(3.5rem + 2px);
+    padding: 1rem 1rem 0.5rem;
+    border-radius: 0.85rem;
+}
+
+.form-floating > .form-control:focus {
+    padding-top: 1rem;
+    padding-bottom: 0.5rem;
+}
+
+.form-floating > label {
+    padding: 1rem 1rem;
+    color: rgba(4, 30, 66, 0.6);
+}
+
+/* Keep admin floating labels from overlapping typed text */
+.form-floating > .form-control:not(:placeholder-shown) ~ label,
+.form-floating > .form-control:focus ~ label {
+    transform: translateY(-0.75rem) scale(0.88);
+    opacity: 0.88;
+    padding-top: 0.5rem;
+    padding-left: 1rem;
+}
+
+/* Hide placeholders once the user interacts so text never overlaps */
+.form-floating > .form-control::placeholder {
+    color: transparent;
+}
+
+.form-floating > .form-control:focus::placeholder,
+.form-floating > .form-control:not(:placeholder-shown)::placeholder {
+    color: transparent;
+}
+
+/* Distinguish admin auth card from customer login */
+.bg-aprimary.bga-gradient {
+    background: radial-gradient(circle at 20% 20%, rgba(255, 205, 0, 0.15), transparent 25%),
+        radial-gradient(circle at 80% 10%, rgba(255, 255, 255, 0.08), transparent 28%),
+        linear-gradient(135deg, rgba(4, 30, 66, 0.95) 0%, rgba(2, 20, 48, 0.92) 100%);
+}
+
+#layoutAuthentication .card {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.9));
+    border: 1px solid rgba(4, 30, 66, 0.08);
 }
 
 .form-control:focus,
