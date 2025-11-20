@@ -3,28 +3,33 @@
 
 require '../config/config.php';
 
+$datos = ['ok' => false];
+
 if (isset($_POST['action'])) {
     $action = $_POST['action'];
-    $id = isset($_POST['id']) ? $_POST['id'] : 0;
+    $id = isset($_POST['id']) ? (int) $_POST['id'] : 0;
 
-    if ($action == 'eliminar') {
-    $id = isset($_POST['id']) ? $_POST['id'] : '';
-    
-    if ($id != '') {
-        if (isset($_SESSION['carrito']['productos'][$id])) {
+    if ($action === 'eliminar') {
+        if ($id > 0 && isset($_SESSION['carrito']['productos'][$id])) {
             unset($_SESSION['carrito']['productos'][$id]);
             $datos['ok'] = true;
-        } else {
-            $datos['ok'] = false;
         }
-    } else {
-        $datos['ok'] = false;
+    } elseif ($action === 'agregar') {
+        $cantidad = isset($_POST['cantidad']) ? (int) $_POST['cantidad'] : 0;
+        $cantidadAnterior = isset($_SESSION['carrito']['productos'][$id]) ? (int) $_SESSION['carrito']['productos'][$id] : 0;
+
+        if ($id > 0 && $cantidad > 0) {
+            $subtotal = agregar($id, $cantidad);
+
+if ($subtotal > 0) {
+                $_SESSION['carrito']['productos'][$id] = $cantidad;
+                $datos['ok'] = true;
+                $datos['sub'] = MONEDA . number_format($subtotal, 2, '.', ',');
+            } else {
+                $datos['cantidadAnterior'] = $cantidadAnterior;
+            }
+        }
     }
-}
-
-
-} else {
-    $datos['ok'] = false;
 }
 
 echo json_encode($datos);

@@ -44,6 +44,27 @@ a:focus {
     width: auto; /* Mantiene la proporción */
 }
 
+.navbar-unimania .navbar-home-btn {
+    background-color: var(--unimania-gold);
+    border-color: var(--unimania-gold);
+    color: var(--unimania-navy) !important;
+    border-radius: 999px;
+    padding: 0.65rem 1.5rem;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-unimania .navbar-home-btn:hover,
+.navbar-unimania .navbar-home-btn:focus {
+    background-color: var(--unimania-classic-gold);
+    border-color: var(--unimania-classic-gold);
+    color: var(--unimania-white) !important;
+    text-decoration: none;
+}
+
+.navbar-unimania .navbar-home-btn:focus {
+    box-shadow: 0 0 0 0.25rem rgba(196, 150, 48, 0.35);
+}
 
 .navbar-unimania .navbar-brand,
 .navbar-unimania .nav-link,

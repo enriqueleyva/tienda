@@ -1,7 +1,15 @@
 <?php
 
-require 'config/config.php';
-require 'clases/clienteFunciones.php';
+require __DIR__ . '/config/config.php';
+require_once __DIR__ . '/clases/clienteFunciones.php';
+
+// Fallback in case helper functions are not loaded for any reason
+if (!function_exists('esNombreValido')) {
+    function esNombreValido($valor)
+    {
+        return preg_match('/^[\p{L}\s]+$/u', $valor) === 1;
+    }
+}
 
 $db = new Database();
 $con = $db->conectar();

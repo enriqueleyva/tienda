@@ -29,6 +29,9 @@ require '../header.php';
             <a class="btn btn-success" href="genera_reporte_compras.php">
                 Reporte de compras
             </a>
+            <a class="btn btn-outline-primary ms-sm-2 mt-2 mt-sm-0" href="estadisticas.php">
+                Visitas y ventas estacionales
+            </a>
         </div>
 
         <hr>

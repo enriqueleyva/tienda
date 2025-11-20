@@ -11,8 +11,8 @@
 <nav class="navbar navbar-expand-lg navbar-dark border-bottom navbar-unimania">
         <div class="container my-1 align-items-center" >
 
-            <a href="index.php" class="navbar-brand">
-                <img src="images/unimania_logo_sf.png" alt="UNIMANIA" class="logo-unimania">
+            <a href="index.php" class="navbar-brand navbar-home-btn btn btn-warning text-uppercase fw-semibold">
+                Inicio
             </a>
             
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navBarTop" aria-controls="navBarTop" aria-expanded="false">

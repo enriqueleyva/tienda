@@ -8,6 +8,16 @@ $con = $db->conectar();
 $idCategoria = $_GET['cat'] ?? '';
 $orden = $_GET['orden'] ?? '';
 $buscar = $_GET['q'] ?? '';
+$precioMin = $_GET['min'] ?? '';
+$precioMax = $_GET['max'] ?? '';
+
+if ($precioMin !== '' && !is_numeric($precioMin)) {
+    $precioMin = '';
+}
+
+if ($precioMax !== '' && !is_numeric($precioMax)) {
+    $precioMax = '';
+}
 
 $orders = [
     'asc' => 'nombre ASC',
@@ -32,6 +42,16 @@ if (!empty($idCategoria)) {
     $params[] = $idCategoria;
 }
 
+if ($precioMin !== '' && is_numeric($precioMin)) {
+    $sql .= " AND precio >= ?";
+    $params[] = $precioMin;
+}
+
+if ($precioMax !== '' && is_numeric($precioMax)) {
+    $sql .= " AND precio <= ?";
+    $params[] = $precioMax;
+}
+
 if (!empty($order)) {
     $sql .= " ORDER BY $order";
 }
@@ -49,6 +69,24 @@ $destacadosSql = $con->prepare("SELECT id, slug, nombre, precio FROM productos W
 $destacadosSql->execute();
 $destacados = $destacadosSql->fetchAll(PDO::FETCH_ASSOC);
 
+$filterParams = [];
+if (!empty($buscar)) {
+    $filterParams['q'] = $buscar;
+}
+if (!empty($orden)) {
+    $filterParams['orden'] = $orden;
+}
+if ($precioMin !== '') {
+    $filterParams['min'] = $precioMin;
+}
+if ($precioMax !== '') {
+    $filterParams['max'] = $precioMax;
+}
+
+$filterQueryString = '';
+if (!empty($filterParams)) {
+    $filterQueryString = '&' . http_build_query($filterParams);
+}
 
 ?>
 <!DOCTYPE html>
@@ -185,15 +223,47 @@ $destacados = $destacadosSql->fetchAll(PDO::FETCH_ASSOC);
         <div class="container p-3">
             <div class="row">
                 <div class="col-12 col-md-3 col-lg-3">
+
+                    <div class="card shadow-sm" style="margin-bottom: 15px;">
+                        <div class="card-header">
+                            Búsqueda y filtros
+                        </div>
+                        <div class="card-body">
+                            <form action="index.php" method="get" class="form">
+                                <div class="form-group">
+                                    <label for="q">Buscar producto</label>
+                                    <input type="text" class="form-control" id="q" name="q" placeholder="Nombre o descripción" value="<?php echo htmlspecialchars($buscar, ENT_QUOTES, 'UTF-8'); ?>">
+                                </div>
+                                <div class="form-group">
+                                    <label for="min">Precio mínimo</label>
+                                    <input type="number" min="0" step="0.01" class="form-control" id="min" name="min" value="<?php echo htmlspecialchars($precioMin, ENT_QUOTES, 'UTF-8'); ?>" placeholder="0.00">
+                                </div>
+                                <div class="form-group">
+                                    <label for="max">Precio máximo</label>
+                                    <input type="number" min="0" step="0.01" class="form-control" id="max" name="max" value="<?php echo htmlspecialchars($precioMax, ENT_QUOTES, 'UTF-8'); ?>" placeholder="0.00">
+                                </div>
+                                <input type="hidden" name="cat" value="<?php echo htmlspecialchars($idCategoria, ENT_QUOTES, 'UTF-8'); ?>">
+                                <input type="hidden" name="orden" value="<?php echo htmlspecialchars($orden, ENT_QUOTES, 'UTF-8'); ?>">
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary btn-block">Aplicar filtros</button>
+                                </div>
+                                <div class="form-group">
+                                    <a href="index.php" class="btn btn-link btn-block">Limpiar filtros</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
                     <div class="card shadow-sm">
                         <div class="card-header">
                             Categorías
                         </div>
                         <div class="list-group">
-                            <a href="index.php" class="list-group-item list-group-item-action">TODO</a>
+                            <?php $cleanQuery = ltrim($filterQueryString, '&'); ?>
+                            <a href="index.php<?php echo !empty($cleanQuery) ? '?' . htmlspecialchars($cleanQuery, ENT_QUOTES, 'UTF-8') : ''; ?>" class="list-group-item list-group-item-action">TODO</a>
                             <?php foreach ($categorias as $categoria) { ?>
-                                <a href="index.php?cat=<?php echo $categoria['id']; ?>" class="list-group-item list-group-item-action <?php echo ($categoria['id'] == $idCategoria) ? 'active' : ''; ?>">
-                                    <?php echo $categoria['nombre']; ?>
+                                <a href="index.php?cat=<?php echo $categoria['id']; ?><?php echo htmlspecialchars($filterQueryString, ENT_QUOTES, 'UTF-8'); ?>" class="list-group-item list-group-item-action <?php echo ($categoria['id'] == $idCategoria) ? 'active' : ''; ?>">
+                                <?php echo $categoria['nombre']; ?>
                                 </a>
                             <?php } ?>
                         </div>
@@ -206,6 +276,9 @@ $destacados = $destacadosSql->fetchAll(PDO::FETCH_ASSOC);
                         <div class="ms-auto">
                             <form action="index.php" id="ordenForm" method="get" onchange="submitForm()">
                                 <input type="hidden" id="cat" name="cat" value="<?php echo $idCategoria; ?>">
+                                <input type="hidden" name="q" value="<?php echo htmlspecialchars($buscar, ENT_QUOTES, 'UTF-8'); ?>">
+                                <input type="hidden" name="min" value="<?php echo htmlspecialchars($precioMin, ENT_QUOTES, 'UTF-8'); ?>">
+                                <input type="hidden" name="max" value="<?php echo htmlspecialchars($precioMax, ENT_QUOTES, 'UTF-8'); ?>">
                                 <label for="cbx-orden" class="form-label">Ordena por</label>
                                 <select class="form-select d-inline-block w-auto pt-1 form-select-sm" name="orden" id="orden">
                                     <option value="precio_alto" <?php echo ($orden === 'precio_alto') ? 'selected' : ''; ?>>Precios más altos</option>
