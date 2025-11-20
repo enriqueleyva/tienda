@@ -11,10 +11,40 @@ if (!function_exists('esNombreValido')) {
     }
 }
 
+$captchaPregunta = null;
+
+function generarCaptchaRegistro(): string
+{
+    $primerNumero = random_int(1, 9);
+    $segundoNumero = random_int(1, 9);
+
+    $_SESSION['registro_captcha'] = [
+        'pregunta' => "$primerNumero + $segundoNumero",
+        'respuesta' => $primerNumero + $segundoNumero,
+    ];
+
+    return $_SESSION['registro_captcha']['pregunta'];
+}
+
+function respuestaCaptchaValida(?string $respuesta): bool
+{
+    if (!isset($_SESSION['registro_captcha']['respuesta'])) {
+        return false;
+    }
+
+    return intval($respuesta) === intval($_SESSION['registro_captcha']['respuesta']);
+}
+
 $db = new Database();
 $con = $db->conectar();
 
 $errors = [];
+
+if (isset($_SESSION['registro_captcha']['pregunta'])) {
+    $captchaPregunta = $_SESSION['registro_captcha']['pregunta'];
+} else {
+    $captchaPregunta = generarCaptchaRegistro();
+}
 
 if (!empty($_POST)) {
 
@@ -26,6 +56,7 @@ if (!empty($_POST)) {
     $usuario = trim($_POST['usuario']);
     $password = trim($_POST['password']);
     $repassword = trim($_POST['repassword']);
+    $captcha = trim($_POST['captcha'] ?? '');
 
     if (esNulo([$nombres, $apellidos, $email, $telefono, $usuario, $password, $repassword])) {
         $errors[] = "Debe llenar todos los campos";
@@ -59,6 +90,11 @@ if (!empty($_POST)) {
         $errors[] = "El correo electrónico $email ya existe";
     }
 
+    if (!respuestaCaptchaValida($captcha)) {
+        $errors[] = "Captcha incorrecto, por favor intente nuevamente";
+        $captchaPregunta = generarCaptchaRegistro();
+    }
+
     if (empty($errors)) {
 
         $id = registraCliente([$nombres, $apellidos, $email, $telefono], $con);
@@ -80,7 +116,11 @@ if (!empty($_POST)) {
                 if ($mailer->enviarEmail($email, $asunto, $cuerpo)) {
                     echo "Para terminar el proceso de registro siga las instrucciones que le hemos enviado a la dirección de correo electrónico $email";
 
+                    unset($_SESSION['registro_captcha']);
                     exit;
+                    } else {
+                    $errors[] = "No se pudo enviar el correo de activación. Por favor verifique los datos o inténtelo más tarde.";
+                    $captchaPregunta = generarCaptchaRegistro();
                 }
             } else {
                 $errors[] = "Error al registrar usuario";
@@ -161,6 +201,11 @@ if (!empty($_POST)) {
                 </div>
 
                 <i><b>Nota:</b> Los campos con asterisco son obligatorios</i>
+
+                <div class="col-md-6">
+                    <label for="captcha"><span class="text-danger">*</span> Demuestra que eres humano: ¿Cuánto es <?php echo htmlspecialchars($captchaPregunta, ENT_QUOTES, 'UTF-8'); ?>?</label>
+                    <input type="number" name="captcha" id="captcha" class="form-control" inputmode="numeric" required>
+                </div>
 
                 <div class="col-12">
                     <button type="submit" class="btn btn-primary">Registrar</button>

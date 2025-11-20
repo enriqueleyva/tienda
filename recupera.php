@@ -50,7 +50,7 @@ if (!empty($_POST)) {
                 }
             }
         } else {
-            $errors[] = "No existe una cuenta asociada a esta dirección de correo";
+             $errors[] = "No se pudo enviar el correo de recuperación. Inténtelo nuevamente más tarde.";    
         }
     }
 }

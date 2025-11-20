@@ -67,6 +67,12 @@ define("MAIL_USER", $config['correo_email']);
 define("MAIL_PASS", descifrar($config['correo_password'], ['key' => KEY_CIFRADO, 'method' => METODO_CIFRADO]));
 define("MAIL_PORT", $config['correo_puerto']);
 
+// Seguridad y remitente para el correo electrónico
+$correoSecure = isset($config['correo_seguridad']) && !empty($config['correo_seguridad']) ? $config['correo_seguridad'] : 'tls';
+define("MAIL_SECURE", strtolower($correoSecure));
+define("MAIL_FROM", $config['correo_email'] ?? MAIL_USER);
+define("MAIL_FROM_NAME", $config['correo_nombre'] ?? 'Tienda CDP');
+
 // Destruir variable
 unset($config);
 
