@@ -16,8 +16,8 @@
                         Inicio
                     </a>
                 </div>
-                <div class="col order-2 order-lg-3">
-                    <div class="navbar-actions d-flex align-items-center gap-3 flex-lg-nowrap w-100 justify-content-center justify-content-lg-end">
+                <div class="col-auto order-2 order-lg-3">
+                    <div class="navbar-actions d-flex align-items-center gap-3 flex-lg-nowrap justify-content-center justify-content-lg-end">
                         <a href="checkout.php" class="btn btn-light btn-outline-primary btn-lg navbar-cart-btn">
                             <i class="fas fa-shopping-cart"></i>Carrito <span id="num_cart" class="badge bg-secondary"> <?php echo $num_cart; ?> </span>
                         </a>
@@ -38,7 +38,7 @@
                         <?php } ?>
                     </div>
                     </div>
-                    <div class="col-12 order-3 order-lg-2">
+                <div class="col-12 col-lg order-3 order-lg-2">
                     <form method="get" action="index.php" autocomplete="off" class="navbar-search-form w-100">
                         <div class="input-group">
                             <input type="text" name="q" class="form-control" placeholder="Buscar..." aria-describedby="icon-buscar">

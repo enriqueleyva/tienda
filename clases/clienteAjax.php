@@ -3,7 +3,7 @@
 require_once '../config/database.php';
 require_once 'clienteFunciones.php';
 
-$datos = [];
+$datos = ['ok' => false];
 
 if (isset($_POST['action'])) {
     $action = $_POST['action'];
@@ -13,7 +13,7 @@ if (isset($_POST['action'])) {
 
     if ($action == 'existeUsuario') {
         $datos['ok'] = usuarioExiste($_POST['usuario'], $con);
-    } elseif ($action = 'existeEmail') {
+    } elseif ($action == 'existeEmail') {
         $datos['ok'] = emailExiste($_POST['email'], $con);
     }
 }

@@ -114,6 +114,11 @@ if (!empty($filterParams)) {
         width: 100%;
         height: auto;
     }
+
+    .carousel-wrapper {
+        margin-top: 2rem;
+    }
+
     </style>
 </head>
 
@@ -125,7 +130,7 @@ if (!empty($filterParams)) {
     <div class="main-content">
         
         <!--- CARRUSEL --->
-        <div class="container">
+        <div class="container carousel-wrapper">
             <br>
             <div id="theCarousel" class="carousel slide" data-ride="carousel">
                 <!-- Indicadores -->
